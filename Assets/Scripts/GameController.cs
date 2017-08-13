@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour {
     public Transform player;
     private PlayerController playerControllerScript;
 
+    public bool gameEnabled;
+
     private void Start()
     {
         gameOver = false;
@@ -89,7 +91,7 @@ public class GameController : MonoBehaviour {
     private IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds(startWait);
-        while (true)
+        while (gameEnabled)
         {
             for (int i = 0; i < hazardCount; ++i)
             {

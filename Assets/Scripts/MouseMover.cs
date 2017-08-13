@@ -34,6 +34,8 @@ public class MouseMover : MonoBehaviour {
 
     private void Update()
     {
+        rb.position = new Vector3(rb.position.x, rb.position.y, 4.5f);
+
 
         //keep track of the mouse position
         Vector3 curScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
@@ -46,7 +48,7 @@ public class MouseMover : MonoBehaviour {
         float moveHorizontal = curPosition.x - transform.position.x;
         float moveVertical = curPosition.y - transform.position.y;
 
-        Debug.Log(moveHorizontal);
+        //Debug.Log(moveHorizontal);
 
         //float moveVertical = Input.GetAxis("Vertical");
 
@@ -54,6 +56,8 @@ public class MouseMover : MonoBehaviour {
 
 
         rb.velocity = movement * speed;
+
+        //rb.position
 
         //rb.position = curPosition;
 
