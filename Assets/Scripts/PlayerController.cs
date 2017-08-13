@@ -121,12 +121,17 @@ public class PlayerController : MonoBehaviour {
     {
         if (Input.GetButton("Fire1"))
         {
-            Fire();
-            foreach (WeaponUnitController weaponScript in weaponScripts)
-            {
-                weaponScript.Fire();
-            }
+            doFire();
             //R1Script.Fire();
+        }
+    }
+
+    public void doFire()
+    {
+        Fire();
+        foreach (WeaponUnitController weaponScript in weaponScripts)
+        {
+            weaponScript.Fire();
         }
     }
 

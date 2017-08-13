@@ -11,10 +11,14 @@ public class MouseMover : MonoBehaviour {
 
     private Rigidbody rb;
 
+    private float originalZ;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         screenSpace = Camera.main.WorldToScreenPoint(transform.position);
+
+        originalZ = rb.position.z;
     }
 
     private void OnMouseDown()
@@ -34,7 +38,7 @@ public class MouseMover : MonoBehaviour {
 
     private void Update()
     {
-        rb.position = new Vector3(rb.position.x, rb.position.y, 4.5f);
+        rb.position = new Vector3(rb.position.x, rb.position.y, originalZ);
 
 
         //keep track of the mouse position

@@ -6,10 +6,12 @@ public class ButtonController : MonoBehaviour {
 
     private Rigidbody rb;
     private Vector3 originalPosition;
-    private Quaternion originalRotation;
+    //private Quaternion originalRotation;
     public GameObject consoleFloor;
 
     public float pressY;
+
+    private float triggerYDiff = 0.8f;
 
     public float returnSpeed;
 
@@ -20,7 +22,7 @@ public class ButtonController : MonoBehaviour {
         Physics.IgnoreCollision(consoleFloor.GetComponent<Collider>(), GetComponent<Collider>());
 
         originalPosition = transform.position;
-        originalRotation = transform.rotation;
+        //originalRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class ButtonController : MonoBehaviour {
         rb.velocity = new Vector3(0.0f, returnSpeed, 0.0f);
         //Debug.Log(originalPosition.y + "   " + -pressY + "     " + rb.position.y);
 
-        rb.position = new Vector3(originalPosition.x, Mathf.Clamp(rb.position.y, -pressY, originalPosition.y), originalPosition.z);
+        rb.position = new Vector3(originalPosition.x, Mathf.Clamp(rb.position.y, originalPosition.y - pressY, originalPosition.y), originalPosition.z);
 
         /*
         rb.position = new Vector3
@@ -43,7 +45,7 @@ public class ButtonController : MonoBehaviour {
        );*/
 
 
-        rb.rotation = originalRotation;
+        //rb.rotation = originalRotation;
 
     }
 }
